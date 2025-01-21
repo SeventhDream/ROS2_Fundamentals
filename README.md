@@ -1,2 +1,2 @@
 # ROS2_Fundamentals
-Learning ROS2 and Gazebo Environment for RObotic Simulation
+Learning ROS2 and Gazebo Environment for Robotic Simulation
