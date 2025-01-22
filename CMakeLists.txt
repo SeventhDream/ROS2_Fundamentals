@@ -38,8 +38,8 @@ include_directories(
 add_executable(cpp_minimal_publisher src/cpp_minimal_publisher.cpp)
 ament_target_dependencies(cpp_minimal_publisher ${dependencies})
  
-#add_executable(cpp_minimal_subscriber src/cpp_minimal_subscriber.cpp)
-#ament_target_dependencies(cpp_minimal_subscriber ${dependencies})
+add_executable(cpp_minimal_subscriber src/cpp_minimal_subscriber.cpp)
+ament_target_dependencies(cpp_minimal_subscriber ${dependencies})
  
 # Copy necessary files to designated locations in the project
 install (
@@ -56,7 +56,7 @@ install(
 install(
   TARGETS
   cpp_minimal_publisher
-#  cpp_minimal_subscriber
+  cpp_minimal_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
  
