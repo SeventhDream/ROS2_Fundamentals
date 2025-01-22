@@ -43,7 +43,7 @@ ament_target_dependencies(cpp_minimal_publisher ${dependencies})
  
 # Copy necessary files to designated locations in the project
 install (
-  DIRECTORY ros2_fundamentals_examples
+  DIRECTORY ros2_fundamentals_examples scripts
   DESTINATION share/${PROJECT_NAME}
 )
  
@@ -67,6 +67,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(
   PROGRAMS
   ros2_fundamentals_examples/py_minimal_publisher.py
+  ros2_fundamentals_examples/py_minimal_subscriber.py
   DESTINATION lib/${PROJECT_NAME}
 )
  
