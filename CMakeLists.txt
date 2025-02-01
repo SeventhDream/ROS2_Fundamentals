@@ -32,14 +32,14 @@ include_directories(
   include
 )
  
-# Tells CMake to create an executable target named cpp_minimal_publisher
-# from the source file src/cpp_minimal_publisher.cpp. Also make sure CMake
+# Tells CMake to create an executable target named minimal_cpp_publisher
+# from the source file src/minimal_cpp_publisher.cpp. Also make sure CMake
 # knows about the program's dependencies.
-add_executable(cpp_minimal_publisher src/cpp_minimal_publisher.cpp)
-ament_target_dependencies(cpp_minimal_publisher ${dependencies})
+add_executable(minimal_cpp_publisher src/minimal_cpp_publisher.cpp)
+ament_target_dependencies(minimal_cpp_publisher ${dependencies})
  
-add_executable(cpp_minimal_subscriber src/cpp_minimal_subscriber.cpp)
-ament_target_dependencies(cpp_minimal_subscriber ${dependencies})
+add_executable(minimal_cpp_subscriber src/minimal_cpp_subscriber.cpp)
+ament_target_dependencies(minimal_cpp_subscriber ${dependencies})
  
 # Copy necessary files to designated locations in the project
 install (
@@ -55,8 +55,8 @@ install(
 # Install cpp executables
 install(
   TARGETS
-  cpp_minimal_publisher
-  cpp_minimal_subscriber
+  minimal_cpp_publisher
+  minimal_cpp_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
  
@@ -76,19 +76,28 @@ install(
 # errors, style issues, and other discrepancies that do not adhere to
 # specified coding standards or best practices.
 if(BUILD_TESTING)
-  #find_package(ament_lint_auto REQUIRED)
+  find_package(ament_lint_auto REQUIRED)
   find_package(ament_cmake_pytest REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  #set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  #set(ament_cmake_cpplint_FOUND TRUE)
-  #ament_lint_auto_find_test_dependencies()
+  find_package(ament_cmake_gtest REQUIRED)
+
   ament_add_pytest_test(minimal_publisher_test test/pytest/test_publisher.py
     TIMEOUT 60
   )
+
+  # C++ tests.
+  ament_add_gtest(minimal_cpp_publisher_test
+    test/gtest/test_publisher.cpp
+  )
+
+  # Add dependencies for the C++ test executable.
+  ament_target_dependencies(minimal_cpp_publisher_test
+    ${dependencies}
+  )
+
+  # Optional: Enable other linting tools
+  #set(ament_cmake_copyright_FOUND TRUE)
+  #set(ament_cmake_cpplint_FOUND TRUE)
+  #ament_lint_auto_find_test_dependencies()
 endif()
 
 # Used to export include directories of a package so that they can be easily

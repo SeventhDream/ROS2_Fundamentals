@@ -89,6 +89,7 @@ private:
  * Initializes the ROS 2 system and runs the minimal_cpp_publisher node.
  * It keeps the node alive until it is manually terminated.
  */
+#ifndef TESTING_EXCLUDE_MAIN
 int main(int argc, char * argv[])
 {
  
@@ -105,3 +106,4 @@ int main(int argc, char * argv[])
   // End of program.
   return 0;
 }
+#endif
