@@ -1,0 +1,8 @@
+[33mCMake Warning:
+  Ignoring extra path from command line:
+
+   "/home/reuel-terezakis/ros2_ws/src/yahboom_rosmaster"
+
+[0m
+[0mCMake Error: The source directory "/home/reuel-terezakis/ros2_ws/src/yahboom_rosmaster" does not appear to contain CMakeLists.txt.
+Specify --help for usage, or press the help button on the CMake GUI.[0m
